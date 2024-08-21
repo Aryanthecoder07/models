@@ -102,9 +102,9 @@ if submit:
           with st.spinner("Analyzing the image..."):
                 image_data = inp(file)
                 r = res(input_prompt, image_data)
-            st.success("Analysis Complete! Here's your report:")
-            st.markdown("---")
-            st.write(r)
+                st.success("Analysis Complete! Here's your report:")
+                st.markdown("---")
+                st.write(r)
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
     else:
