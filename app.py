@@ -95,7 +95,8 @@ if submit:
     if file is not None:
         try:
             
-            image = Image.open(file,caption="Uploaded Meal Image", use_column_width=True)
+          image = Image.open(file)
+          st.image(image, caption="Uploaded Meal Image", use_column_width=True, clamp=True)
             
 
             with st.spinner("Analyzing the image..."):
