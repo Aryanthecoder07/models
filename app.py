@@ -94,6 +94,10 @@ submit = st.button("Tell Me About My Food 🍽️")
 if submit:
     if file is not None:
         try:
+            
+            image = Image.open(file)
+            image_placeholder.image(image, caption="Uploaded Meal Image", use_column_width=True, clamp=True)
+
             with st.spinner("Analyzing the image..."):
                 image_data = inp(file)
                 r = res(input_prompt, image_data)
