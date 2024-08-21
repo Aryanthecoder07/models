@@ -95,8 +95,8 @@ if submit:
     if file is not None:
         try:
             
-            image = Image.open(file)
-            image_placeholder.image(image, caption="Uploaded Meal Image", use_column_width=True, clamp=True)
+            image = Image.open(file,caption="Uploaded Meal Image", use_column_width=True)
+            
 
             with st.spinner("Analyzing the image..."):
                 image_data = inp(file)
