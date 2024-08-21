@@ -99,7 +99,7 @@ if submit:
           st.image(image, caption="Uploaded Meal Image", use_column_width=True, clamp=True)
             
 
-            with st.spinner("Analyzing the image..."):
+          with st.spinner("Analyzing the image..."):
                 image_data = inp(file)
                 r = res(input_prompt, image_data)
             st.success("Analysis Complete! Here's your report:")
