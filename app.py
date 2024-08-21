@@ -1,9 +1,9 @@
 import streamlit as st
+from PIL import Image
 import google.generativeai as gen
 import os
-from PIL import Image
 
-# Configure the API key
+# Configure the API key for the model
 gen.configure(api_key="AIzaSyB9y3zCzpzNKzFq7LOWMn7d3SirCDtDYUI")
 
 # Function to get the response from the model
@@ -27,18 +27,7 @@ def inp(file):
         raise FileNotFoundError("No file uploaded")
 
 # Streamlit app setup
-st.set_page_config(page_title="My Personal Nutritionist", page_icon="🍎", layout="centered")
-
-# Load CSS from file
-with open("styles.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-# Load HTML for carousel
-
-
-# Load JavaScript from file
-#with open("scripts.js") as f:
- #   st.markdown(f"<script>{f.read()}</script>", unsafe_allow_html=True)
+st.set_page_config(page_title="My Personal Nutritionist", page_icon="🍏", layout="centered")
 
 # Header
 st.header("🍏 My Personal Nutritionist")
@@ -53,11 +42,25 @@ st.markdown("""
     - **Improving mental health**: A nutritious diet can enhance mood and mental clarity.
     - **Reducing chronic diseases**: Healthy eating lowers the risk of heart disease, diabetes, and other chronic conditions.
 """)
-st.subheader("Know about some healthy food sources")
-with open("corosel.html") as f:
-    st.markdown(f.read(), unsafe_allow_html=True)
 
- 
+# Carousel Simulation with Streamlit
+st.subheader("🎠 Food Carousel ")
+food_options = {
+    "Salmon": "Rich in Omega-3 fatty acids, great for heart health.",
+    "Broccoli": "Packed with vitamins C and K, fiber, and antioxidants.",
+    "Quinoa": "A complete protein source, high in fiber and minerals.",
+    "Blueberries": "Loaded with antioxidants, supports brain health.",
+    "Avocado": "High in healthy fats, supports heart health."
+}
+
+# Create a selectbox to simulate carousel navigation
+selected_food = st.selectbox("Select a food item to see details:", list(food_options.keys()))
+
+# Display details of the selected food
+st.write(f"**{selected_food}**")
+st.write(food_options[selected_food])
+
+# Placeholder for displaying the uploaded image
 
 
 
@@ -74,10 +77,6 @@ st.markdown("""
 file = st.file_uploader("Choose an image of your meal", type=["jpg", "png", "jpeg"])
 image = ""
 
-# Display uploaded image
-if file is not None:
-    image = Image.open(file)
-    st.image(image, caption="Uploaded Meal Image", use_column_width=True, clamp=True)
 
 # Button to submit and get the analysis
 input_prompt = (
